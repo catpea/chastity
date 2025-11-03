@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "name": "chastity",
+  "version": "1.0.0",
+  "description": "If it can't be expressed through regexp, it doesn't belong in markdown",
+
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["markdown"],
+  "author": "",
+  "license": "MIT"
+}
