@@ -63,33 +63,6 @@ export class Chastity {
     });
 
     this.register({
-      name: 'bold',
-      description: 'Bold text wrapped in double asterisks',
-      usage: '**bold text**',
-      pattern: '\\*\\*(?<text>[^*]+)\\*\\*',
-      flags: 'g',
-      replacement: ({ text }) => `<strong>${text}</strong>`
-    });
-
-    this.register({
-      name: 'italic',
-      description: 'Italic text wrapped in single asterisks',
-      usage: '*italic text*',
-      pattern: '\\*(?<text>[^*]+)\\*',
-      flags: 'g',
-      replacement: ({ text }) => `<em>${text}</em>`
-    });
-
-    this.register({
-      name: 'strikethrough',
-      description: 'Strikethrough text wrapped in double tildes',
-      usage: '~~deleted text~~',
-      pattern: '~~(?<text>[^~]+)~~',
-      flags: 'g',
-      replacement: ({ text }) => `<del>${text}</del>`
-    });
-
-    this.register({
       name: 'unordered-list',
       description: 'Unordered list items starting with - or *',
       usage: '- item one\\n- item two',
@@ -119,6 +92,33 @@ export class Chastity {
           .join('\n');
         return `<ol>\n${items}\n</ol>`;
       }
+    });
+
+    this.register({
+      name: 'bold',
+      description: 'Bold text wrapped in double asterisks',
+      usage: '**bold text**',
+      pattern: '\\*\\*(?<text>[^*]+)\\*\\*',
+      flags: 'g',
+      replacement: ({ text }) => `<strong>${text}</strong>`
+    });
+
+    this.register({
+      name: 'italic',
+      description: 'Italic text wrapped in single asterisks',
+      usage: '*italic text*',
+      pattern: '\\*(?<text>[^*]+)\\*',
+      flags: 'g',
+      replacement: ({ text }) => `<em>${text}</em>`
+    });
+
+    this.register({
+      name: 'strikethrough',
+      description: 'Strikethrough text wrapped in double tildes',
+      usage: '~~deleted text~~',
+      pattern: '~~(?<text>[^~]+)~~',
+      flags: 'g',
+      replacement: ({ text }) => `<del>${text}</del>`
     });
 
     this.register({
@@ -165,7 +165,8 @@ export class Chastity {
       html = html.replace(regex, (...args) => {
         // Build named groups object
         const groups = args[args.length - 1];
-        return feature.replacement(groups || args);
+        // If groups is an object (named groups), use it; otherwise use args array
+        return feature.replacement(typeof groups === 'object' && !Array.isArray(groups) ? groups : args);
       });
     }
 
