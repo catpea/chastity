@@ -1,15 +1,16 @@
 {
   "type": "module",
   "name": "chastity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "If it can't be expressed through regexp, it doesn't belong in markdown",
-
   "main": "index.js",
   "scripts": {
     "save": "git add .; git commit -m 'Updated Release'; npm version patch; npm publish; git push --follow-tags;",
     "test": "node --test"
   },
-  "keywords": ["markdown"],
+  "keywords": [
+    "markdown"
+  ],
   "author": "catpea (https://github.com/catpea)",
   "license": "MIT",
   "repository": {
