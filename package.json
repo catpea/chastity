@@ -6,9 +6,22 @@
 
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "save": "git add .; git commit -m 'Updated Release'; npm version patch; npm publish; git push --follow-tags;",
+    "test": "node --test"
   },
   "keywords": ["markdown"],
-  "author": "",
-  "license": "MIT"
+  "author": "catpea (https://github.com/catpea)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/chastity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/catpea/chastity/issues"
+  },
+  "homepage": "https://catpea.github.io/chastity",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/catpea"
+  }
 }
