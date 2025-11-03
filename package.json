@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "save": "git add .; git commit -m 'Updated Release'; npm version patch; npm publish; git push --follow-tags;",
-    "test": "node --test"
+    "test": "node --test",
+    "prepublishOnly": "npm test"
   },
   "keywords": [
     "markdown"
